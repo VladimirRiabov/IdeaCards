@@ -84,8 +84,7 @@ class RegisterViewController: UIViewController {
         //loading spinning indicator
         ProgressHUD.show()
         FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, username: usernameTextField.text!, city: cityTextField.text!, isMale: isMale, dateOfBirth: Date()) { error in
-            //dismiss progress spining indicator
-            ProgressHUD.dismiss()
+
             if error == nil {
                 ProgressHUD.showSuccess("Verification email sent!")
                 

@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import UIKit
 
 class FUser: Equatable {
     //сравнивает два пользователя
@@ -14,7 +15,44 @@ class FUser: Equatable {
         lhs.objectId == rhs.objectId
     }
     
-    let objectId: String = ""
+    let objectId: String
+    var email: String
+    var username: String
+    var dateOfBirth: Date
+    var isMale: Bool
+    var avatar: UIImage?
+    var profession: String
+    var jobTitle: String
+    var about: String
+    var city: String
+    var country: String
+    var height: Double
+    var lookingFor: String
+    var avatarLink: String
+    
+    var likedIdArray: [String]?
+    var imageLinks: [String]?
+    let registeredDate = Date()
+    var pushId: String?
+    
+    //MARK: - Inits
+    init(_objectId: String, _email: String, _username: String, _city: String, _dateOfBirth: Date, _isMale: Bool, _avatarLink: String = "") {
+        objectId = _objectId
+        email = _email
+        username = _username
+        dateOfBirth = _dateOfBirth
+        isMale = _isMale
+        profession = ""
+        jobTitle = ""
+        about = ""
+        city = _city
+        country = ""
+        height = 0.0
+        lookingFor = ""
+        avatarLink = _avatarLink
+        likedIdArray = []
+        imageLinks = []
+    }
     
     //причина почему это классовая функция в том, что я смогу ее вызвать без обязательной инициализации FUser
     class func registerUserWith(email: String, password: String, username: String, city: String, isMale: Bool, dateOfBirth: Date, completion: @escaping (_ error: Error?) -> Void) {
@@ -27,6 +65,10 @@ class FUser: Equatable {
                     print("auth email verification sent", error?.localizedDescription)
                 }
                 //create user in database
+                //auth.user = userUID
+                if authData?.user != nil {
+                    let user = FUser(_objectId: authData!.user.uid, _email: email, _username: username, _city: city, _dateOfBirth: dateOfBirth, _isMale: isMale)
+                }
             }
         }
     }
