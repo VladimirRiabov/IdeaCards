@@ -171,7 +171,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="LLu-iF-RZ8"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -227,6 +226,9 @@
                                     <segment title="Male"/>
                                     <segment title="Femaile"/>
                                 </segments>
+                                <connections>
+                                    <action selector="genderSegmentValueChanged:" destination="Eyh-3L-L7Y" eventType="valueChanged" id="Hsl-8F-Zgt"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date of Birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5zT-sW-F7H">
                                 <rect key="frame" x="20" y="339" width="374" height="25"/>

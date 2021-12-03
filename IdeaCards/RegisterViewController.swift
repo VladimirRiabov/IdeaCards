@@ -21,6 +21,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var genderSegmentOutlet: UISegmentedControl!
     @IBOutlet weak var backgroundImageView: UIView!
     
+    //MARK: - Vars
+    var isMale = true
+    
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +38,23 @@ class RegisterViewController: UIViewController {
     }
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         if isTextDataImputet() {
-            //register the user
+            //проверка пароля на совпадение
+            if passwordTextField.text! == confirmPasswordTextField.text! {
+                registerUser()
+            } else {
+                ProgressHUD.showError("Passwords don't match")
+            }
         } else {
             ProgressHUD.showError("All fields are required!")
         }
-        
     }
     @IBAction func logInButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func genderSegmentValueChanged(_ sender: UISegmentedControl) {
+                                            //short if/else statement
+//        isMale = sender.selectedSegmentIndex == 0 ? true : false
+        isMale = sender.selectedSegmentIndex == 0
     }
     
     
@@ -65,5 +77,21 @@ class RegisterViewController: UIViewController {
     
     private func isTextDataImputet () -> Bool {
         return usernameTextField.text != "" && emailTextField.text != "" && cityTextField.text != "" && dateOfBirthTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != ""
+    }
+    
+    //MARK: - Register User
+    private func registerUser() {
+        //loading spinning indicator
+        ProgressHUD.show()
+        FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, username: usernameTextField.text!, city: cityTextField.text!, isMale: isMale, dateOfBirth: Date()) { error in
+            //dismiss progress spining indicator
+            ProgressHUD.dismiss()
+            if error == nil {
+                ProgressHUD.showSuccess("Verification email sent!")
+                
+            } else {
+                ProgressHUD.showError(error!.localizedDescription)
+            }
+        }
     }
 }
