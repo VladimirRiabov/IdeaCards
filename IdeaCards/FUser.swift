@@ -35,6 +35,49 @@ class FUser: Equatable {
     let registeredDate = Date()
     var pushId: String?
     
+    var userDictionary: NSDictionary {
+        return NSDictionary(
+            objects:[
+                self.objectId,
+                self.email,
+                self.username,
+                self.dateOfBirth,
+                self.isMale,
+                self.profession,
+                self.jobTitle,
+                self.about,
+                self.city,
+                self.country,
+                self.height,
+                self.lookingFor,
+                self.avatarLink,
+                self.likedIdArray ?? [],
+                self.imageLinks ?? [],
+                self.registeredDate,
+                self.pushId],
+            forKeys:[
+                kOBJECTID as NSCopying,
+                kEMAIL as NSCopying,
+                kUSERNAME as NSCopying,
+                kDATEOFBIRTH as NSCopying,
+                kISMALE as NSCopying,
+                kPROFESSION as NSCopying,
+                kJOBTITLE as NSCopying,
+                kABOUT as NSCopying,
+                kCITY as NSCopying,
+                kCOUNTRY as NSCopying,
+                kHEIGHT as NSCopying,
+                kLOOKINGFOR as NSCopying,
+                kAVATARLINK as NSCopying,
+                kLIKEDIDARRAY as NSCopying,
+                kIMAGELINKS as NSCopying,
+                kREGISTEREDDATE as NSCopying,
+                kPUSHID as NSCopying]
+                )
+    }
+    
+   
+    
     //MARK: - Inits
     init(_objectId: String, _email: String, _username: String, _city: String, _dateOfBirth: Date, _isMale: Bool, _avatarLink: String = "") {
         objectId = _objectId
@@ -68,9 +111,13 @@ class FUser: Equatable {
                 //auth.user = userUID
                 if authData?.user != nil {
                     let user = FUser(_objectId: authData!.user.uid, _email: email, _username: username, _city: city, _dateOfBirth: dateOfBirth, _isMale: isMale)
+                    user.saveUserLocally()
                 }
             }
         }
+    }
+    func saveUserLocally() {
+        
     }
     
 }
