@@ -87,6 +87,7 @@ class RegisterViewController: UIViewController {
 
             if error == nil {
                 ProgressHUD.showSuccess("Verification email sent!")
+                self.dismiss(animated: true, completion: nil)
                 
             } else {
                 ProgressHUD.showError(error!.localizedDescription)

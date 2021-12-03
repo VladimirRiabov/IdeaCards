@@ -54,7 +54,7 @@ class FUser: Equatable {
                 self.likedIdArray ?? [],
                 self.imageLinks ?? [],
                 self.registeredDate,
-                self.pushId],
+                self.pushId ?? ""],
             forKeys:[
                 kOBJECTID as NSCopying,
                 kEMAIL as NSCopying,
@@ -117,7 +117,9 @@ class FUser: Equatable {
         }
     }
     func saveUserLocally() {
-        
+        //сохраняет нашего пользователья в UserDefaults
+        userDefaults.setValue(self.userDictionary as! [String : Any], forKey: kCURRENTUSER)
+        userDefaults.synchronize()
     }
     
 }
