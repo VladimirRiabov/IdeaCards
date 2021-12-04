@@ -23,12 +23,13 @@ class RegisterViewController: UIViewController {
     
     //MARK: - Vars
     var isMale = true
+    var datePicker = UIDatePicker()
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-     setupBackgroundTouch()
+        setupDatePicker()
+        setupBackgroundTouch()
     }
     
     //MARK: - IBActions
@@ -59,6 +60,34 @@ class RegisterViewController: UIViewController {
     
     
     //MARK: - Setup
+    private func setupDatePicker() {
+        datePicker.datePickerMode = .date
+        //We want to take that date from the date picker and put it in our date of birth text field.
+        //self this is the RegisterView the target is going to be.
+        //every time a value on the spinner changes(.valueChanged), we want these handle peaker to be called.
+        datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+        //by default, if you select any textfield, the keyboard will appear.
+        //Instead, the input view is going to be a date peaker.
+        dateOfBirthTextField.inputView = datePicker
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        //поставил стандартные цвета путем расширения стандартного UIColor. см файл Extensions
+        toolBar.tintColor = UIColor().primary()
+        //depending on the screen size, we want to put everything on a screen size.
+        toolBar.sizeToFit()
+        //whenever a user clicks on these Kinsel, we have this function. dismissKeyboard
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClicked))
+        
+        //It's flexible and it pushes everything left and the right maximum possible.
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        
+        dateOfBirthTextField.inputAccessoryView = toolBar
+    }
     
     private func setupBackgroundTouch() {
         backgroundImageView.isUserInteractionEnabled = true
@@ -71,9 +100,17 @@ class RegisterViewController: UIViewController {
     }
     
     //MARK: - Helpers
-    private func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         self.view.endEditing(false)
     }
+    @objc func handleDatePicker() {
+        
+    }
+    @objc func doneClicked() {
+        
+    }
+    
+    
     
     private func isTextDataImputet () -> Bool {
         return usernameTextField.text != "" && emailTextField.text != "" && cityTextField.text != "" && dateOfBirthTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != ""

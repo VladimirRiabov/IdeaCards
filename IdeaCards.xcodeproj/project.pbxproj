@@ -19,6 +19,7 @@
 		A47B37A427393D0D0098EA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B37A327393D0D0098EA4C /* Assets.xcassets */; };
 		A47B37A727393D0D0098EA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47B37A527393D0D0098EA4C /* LaunchScreen.storyboard */; };
 		A47B37AF27393F370098EA4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A47B37AE27393F370098EA4C /* GoogleService-Info.plist */; };
+		A4ECA18C275BFA26003B7A8C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA18B275BFA26003B7A8C /* Extensions.swift */; };
 		B947A2A05B7D9DC34C4289B6 /* Pods_IdeaCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939F46E7614845B142EA8CCC /* Pods_IdeaCards.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		A47B37A627393D0D0098EA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A47B37A827393D0D0098EA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B37AE27393F370098EA4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A4ECA18B275BFA26003B7A8C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				A43A1EA9275A351A00753485 /* Constants.swift */,
+				A4ECA18B275BFA26003B7A8C /* Extensions.swift */,
 				A478038B275BA70200587F3C /* FirebaseListener.swift */,
 				A4780389275BA58000587F3C /* FCollectionReference.swift */,
 			);
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A478038C275BA70200587F3C /* FirebaseListener.swift in Sources */,
+				A4ECA18C275BFA26003B7A8C /* Extensions.swift in Sources */,
 				A43A1EA82759822E00753485 /* FUser.swift in Sources */,
 				A43A1EA42759460400753485 /* WelcomeViewController.swift in Sources */,
 				A47B379B27393D0C0098EA4C /* AppDelegate.swift in Sources */,

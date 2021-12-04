@@ -43,11 +43,15 @@ class WelcomeViewController: UIViewController {
     }
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if emailTextField.text != "" && passwordTextField.text != "" {
+            
+            ProgressHUD.show()
+            
             FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error, isEmailVerified) in
                 if error != nil {
                     ProgressHUD.showError(error!.localizedDescription)
                 } else if isEmailVerified {
                     //enter the application
+                    ProgressHUD.dismiss()
                     self.goToApp()
                 } else {
                     ProgressHUD.showError("Please verify your email!")

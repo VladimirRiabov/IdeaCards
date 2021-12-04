@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         //мы запускаем эту функцию здесь, т.к эта функция это первое что запуститься в приложении
-        autoLogin()
+//        autoLogin()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
