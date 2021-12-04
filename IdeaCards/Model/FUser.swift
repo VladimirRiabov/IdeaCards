@@ -160,6 +160,18 @@ class FUser: Equatable {
             }
         }
     }
+    //MARK: - Resend Links
+    class func resetPasswordFor(email: String, completion: @escaping (_ error: Error?) -> Void) {
+        //currentUser - user object from firebase, not an our currentUser. So this is the currently logged in user on our application.
+        //We want to just reload to see if it's still perceived.
+        Auth.auth().currentUser?.reload(completion: { (error) in
+        //If the user exist, we want to do is to send the verification email.
+            Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+                completion(error)
+            }
+        })
+    }
+    
     //MARK: - Save User funcs
     func saveUserLocally() {
         //сохраняет нашего пользователья в UserDefaults
