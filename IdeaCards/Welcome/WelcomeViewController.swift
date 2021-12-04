@@ -47,8 +47,8 @@ class WelcomeViewController: UIViewController {
                 if error != nil {
                     ProgressHUD.showError(error!.localizedDescription)
                 } else if isEmailVerified {
-                    print("go to app")
                     //enter the application
+                    self.goToApp()
                 } else {
                     ProgressHUD.showError("Please verify your email!")
                 }
@@ -74,6 +74,15 @@ class WelcomeViewController: UIViewController {
     //MARK: - Helpers
     private func dismissKeyboard() {
         self.view.endEditing(false)
+    }
+    
+    //MARK: - Navigation
+    private func goToApp() {
+        //делает новым главным окном основной вьюконтроллер
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as! UITabBarController
+        //делает переход на фулскрин новое главное окно
+        mainView.modalPresentationStyle = .fullScreen
+        self.present(mainView, animated: true, completion: nil)
     }
     
     
