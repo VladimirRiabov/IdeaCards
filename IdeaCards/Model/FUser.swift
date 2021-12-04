@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import UIKit
+import FirebaseFirestore
 
 class FUser: Equatable {
     //сравнивает два пользователя
@@ -97,6 +98,49 @@ class FUser: Equatable {
         imageLinks = []
     }
     
+    init(_dictionary: NSDictionary) {
+        objectId = _dictionary[kOBJECTID] as? String ?? ""
+        email = _dictionary[kEMAIL] as? String ?? ""
+        username = _dictionary[kUSERNAME] as? String ?? ""
+        isMale = _dictionary[kISMALE] as? Bool ?? true
+        profession = _dictionary[kPROFESSION] as? String ?? ""
+        jobTitle = _dictionary[kJOBTITLE] as? String ?? ""
+        about = _dictionary[kABOUT] as? String ?? ""
+        city = _dictionary[kCITY] as? String ?? ""
+        country = _dictionary[kCOUNTRY] as? String ?? ""
+        height = _dictionary[kHEIGHT] as? Double ?? 0.0
+        lookingFor = _dictionary[kLOOKINGFOR] as? String ?? ""
+        avatarLink = _dictionary[kAVATARLINK] as? String ?? ""
+        likedIdArray = _dictionary[kLIKEDIDARRAY] as? [String]
+        imageLinks = _dictionary[kIMAGELINKS] as? [String]
+        
+        if let date = _dictionary[kDATEOFBIRTH] as? Timestamp {
+            //создает объект из Timestamp
+            dateOfBirth = date.dateValue()
+        } else {
+            dateOfBirth = _dictionary[kDATEOFBIRTH] as? Date ?? Date()
+        }
+    }
+    //MARK: - Login User
+    class func  loginUserWith(email: String, password: String, completion: @escaping (_ error: Error?,_ isEmailVerified: Bool) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (authDataResult, error) in
+            if error == nil {
+                if authDataResult!.user.isEmailVerified {
+                    //check if user exists in Firebase
+                    FirebaseListener.shared.downloadCurrentUserFromFirebase(userId: authDataResult!.user.uid, email: email)
+                    completion(error, true)
+                } else {
+                    print("Email not verified")
+                    completion(error, false)
+                }
+            } else {
+                completion(error, false)
+            }
+        }
+        
+    }
+    
+    //MARK: - Register User
     //причина почему это классовая функция в том, что я смогу ее вызвать без обязательной инициализации FUser
     class func registerUserWith(email: String, password: String, username: String, city: String, isMale: Bool, dateOfBirth: Date, completion: @escaping (_ error: Error?) -> Void) {
         
@@ -116,10 +160,19 @@ class FUser: Equatable {
             }
         }
     }
+    //MARK: - Save User funcs
     func saveUserLocally() {
         //сохраняет нашего пользователья в UserDefaults
         userDefaults.setValue(self.userDictionary as! [String : Any], forKey: kCURRENTUSER)
         userDefaults.synchronize()
     }
-    
+    func saveUserToFirestore() {
+        //We are going to access our firebase reference, so we want to get these. A reference of the user FALDER user collection. Где таблица с базами данных. Создаем документ с именем self.objectId т.е. я ссылаюсь на этот класс наверху там есть objId
+        //И затем в этот созданный документ я вставляю свой userDictionary из этого класса и форматируем это as! [String : Any]
+        FirebaseReference(.User).document(self.objectId).setData(self.userDictionary as! [String : Any]) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
 }
