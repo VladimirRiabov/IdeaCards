@@ -26,11 +26,23 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var lookingForTextField: UITextField!
     
     
+    //MARK: - Vars
+    var editingMode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackgrounds()
+        updateEditingMode()
+        
+        
+        
         //от меня строчка. закрывает черную полоску в статус баре
         navigationController?.navigationBar.subviews[0].backgroundColor = UIColor().primary()
+    }
+    
+    //убирает название секций
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
     }
     
     //MARK: - IBActions
@@ -39,6 +51,17 @@ class ProfileTableViewController: UITableViewController {
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
     }
     @IBAction func editButtonPressed(_ sender: UIButton) {
+        //меняет значение переменной на противоположную
+        editingMode.toggle()
+        
+        updateEditingMode()
+        editingMode ? showKeyboard() : hideKeyboard()
+        showSaveButton()
+    }
+    
+    @objc func editUserData() {
+        print("fuck you")
+        
     }
     
     //MARK: - Setup
@@ -50,10 +73,31 @@ class ProfileTableViewController: UITableViewController {
         
         aboutMeTextView.layer.cornerRadius = 10
     }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+    private func showSaveButton() {
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(editUserData))
+        //пока editingMode true будет появляться saveButton с функцией editUserData
+        navigationItem.rightBarButtonItem = editingMode ? saveButton : nil
     }
     
+    //MARK: - Editing Mode
+    private func updateEditingMode() {
+        aboutMeTextField.isUserInteractionEnabled = editingMode
+        aboutMeTextView.isUserInteractionEnabled = editingMode
+        jobTextField.isUserInteractionEnabled = editingMode
+        educationTextField.isUserInteractionEnabled = editingMode
+        genderTextField.isUserInteractionEnabled = editingMode
+        cityTextField.isUserInteractionEnabled = editingMode
+        countryTextField.isUserInteractionEnabled = editingMode
+        heightTextField.isUserInteractionEnabled = editingMode
+        lookingForTextField.isUserInteractionEnabled = editingMode
+    }
+    private func showKeyboard() {
+        //когда я нажимаю кнопку редактирования у меня сразу появится клавиатура и курсор появится в первом текстовом поле
+        self.aboutMeTextField.becomeFirstResponder()
+    }
+    private func hideKeyboard() {
+        self.view.endEditing(false)
+        
+    }
 
 }
