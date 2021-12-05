@@ -19,6 +19,7 @@
 		A47B37A427393D0D0098EA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47B37A327393D0D0098EA4C /* Assets.xcassets */; };
 		A47B37A727393D0D0098EA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A47B37A527393D0D0098EA4C /* LaunchScreen.storyboard */; };
 		A47B37AF27393F370098EA4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A47B37AE27393F370098EA4C /* GoogleService-Info.plist */; };
+		A4A15682275D0231007CA4B6 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A15681275D0231007CA4B6 /* ProfileTableViewController.swift */; };
 		A4ECA18C275BFA26003B7A8C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECA18B275BFA26003B7A8C /* Extensions.swift */; };
 		B947A2A05B7D9DC34C4289B6 /* Pods_IdeaCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939F46E7614845B142EA8CCC /* Pods_IdeaCards.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		A47B37A627393D0D0098EA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A47B37A827393D0D0098EA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A47B37AE27393F370098EA4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A4A15681275D0231007CA4B6 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		A4ECA18B275BFA26003B7A8C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A47B379A27393D0C0098EA4C /* AppDelegate.swift */,
+				A4A15681275D0231007CA4B6 /* ProfileTableViewController.swift */,
 				A47B379C27393D0C0098EA4C /* SceneDelegate.swift */,
 				A47B37A027393D0C0098EA4C /* Main.storyboard */,
 				A47B37A327393D0D0098EA4C /* Assets.xcassets */,
@@ -258,6 +261,7 @@
 				A43A1EA42759460400753485 /* WelcomeViewController.swift in Sources */,
 				A47B379B27393D0C0098EA4C /* AppDelegate.swift in Sources */,
 				A47B379D27393D0C0098EA4C /* SceneDelegate.swift in Sources */,
+				A4A15682275D0231007CA4B6 /* ProfileTableViewController.swift in Sources */,
 				A43A1EA62759460E00753485 /* RegisterViewController.swift in Sources */,
 				A478038A275BA58000587F3C /* FCollectionReference.swift in Sources */,
 				A43A1EAA275A351A00753485 /* Constants.swift in Sources */,
@@ -410,6 +414,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G57YK5NT2Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IdeaCards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -439,6 +444,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G57YK5NT2Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IdeaCards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
