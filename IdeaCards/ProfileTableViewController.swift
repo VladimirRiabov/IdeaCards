@@ -38,6 +38,7 @@ class ProfileTableViewController: UITableViewController {
         
         //от меня строчка. закрывает черную полоску в статус баре
         navigationController?.navigationBar.subviews[0].backgroundColor = UIColor().primary()
+        overrideUserInterfaceStyle = .light
     }
     
     //убирает название секций
@@ -47,8 +48,10 @@ class ProfileTableViewController: UITableViewController {
     
     //MARK: - IBActions
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
+        showEditOptions()
     }
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
+        showPictureOptions()
     }
     @IBAction func editButtonPressed(_ sender: UIButton) {
         //меняет значение переменной на противоположную
@@ -97,6 +100,40 @@ class ProfileTableViewController: UITableViewController {
     }
     private func hideKeyboard() {
         self.view.endEditing(false)
+        
+    }
+    
+    //MARK: - AlertController
+    private func showPictureOptions() {
+        let alertController = UIAlertController(title: "Upload picture", message: "You can change your avatar or upload more pictures", preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Change avatar", style: .default, handler: { (alert) in
+            print("changeavatar")
+        }))
+        alertController.addAction(UIAlertAction(title: "Upload pictures", style: .default, handler: { (alert) in
+            print("uploadPictures")
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    private func showEditOptions() {
+        let alertController = UIAlertController(title: "Edit account", message: "You are about to edit sensetive information about your account", preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Change email", style: .default, handler: { (alert) in
+            print("changeemail")
+        }))
+        alertController.addAction(UIAlertAction(title: "Change name", style: .default, handler: { (alert) in
+            print("changename")
+        }))
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (alert) in
+            print("logout")
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
         
     }
 
