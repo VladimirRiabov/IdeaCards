@@ -7,6 +7,7 @@
 
 import UIKit
 import Gallery
+import ProgressHUD
 
 class ProfileTableViewController: UITableViewController {
     
@@ -177,10 +178,10 @@ class ProfileTableViewController: UITableViewController {
         let alertController = UIAlertController(title: "Upload picture", message: "You can change your avatar or upload more pictures", preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Change avatar", style: .default, handler: { (alert) in
-            print("changeavatar")
+            self.showGallery(forAvatar: true)
         }))
         alertController.addAction(UIAlertAction(title: "Upload pictures", style: .default, handler: { (alert) in
-            print("uploadPictures")
+            self.showGallery(forAvatar: false)
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -206,4 +207,42 @@ class ProfileTableViewController: UITableViewController {
         
     }
 
+}
+
+extension ProfileTableViewController: GalleryControllerDelegate {
+    func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
+        if images.count > 0 {
+            if uploadingAvatar {
+                images.first!.resolve { (icon) in
+                    if icon != nil {
+                        //the way how we will save our avatar
+                        self.editingMode = true
+                        self.showSaveButton()
+                        self.avatarImageView.image = icon
+                        //устанавлеваем глобальную переменную тоже равной айкон
+                        self.avatarImage = icon
+                    } else {
+                        ProgressHUD.showError("Couldn't select image")
+                    }
+                }
+            } else {
+                print("we have multiple images")
+            }
+        }
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func galleryControllerDidCancel(_ controller: GalleryController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
