@@ -149,6 +149,9 @@ class ProfileTableViewController: UITableViewController {
         heightTextField.isUserInteractionEnabled = editingMode
         lookingForTextField.isUserInteractionEnabled = editingMode
     }
+    
+    //MARK: - Helpers
+    
     private func showKeyboard() {
         //когда я нажимаю кнопку редактирования у меня сразу появится клавиатура и курсор появится в первом текстовом поле
         self.aboutMeTextField.becomeFirstResponder()
@@ -157,6 +160,12 @@ class ProfileTableViewController: UITableViewController {
         self.view.endEditing(false)
         
     }
+    
+    private func uploadImages(images: [UIImage?]) {
+        ProgressHUD.show()
+        //upload images
+    }
+    
     
     //MARK: - Gallery
     private func showGallery(forAvatar: Bool) {
@@ -226,7 +235,9 @@ extension ProfileTableViewController: GalleryControllerDelegate {
                     }
                 }
             } else {
-                print("we have multiple images")
+                Image.resolve(images: images) { (resolvedImages) in
+                    self.uploadImages(images: resolvedImages)
+                }
             }
         }
         controller.dismiss(animated: true, completion: nil)
