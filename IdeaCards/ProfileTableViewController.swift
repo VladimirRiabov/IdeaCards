@@ -18,7 +18,7 @@ class ProfileTableViewController: UITableViewController {
     @IBOutlet weak var aboutMeTextField: UITextView!
     @IBOutlet weak var aboutMeTextView: UIView!
     @IBOutlet weak var jobTextField: UITextField!
-    @IBOutlet weak var educationTextField: UITextField!
+    @IBOutlet weak var professionTextField: UITextField!
     @IBOutlet weak var genderTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
@@ -32,7 +32,13 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackgrounds()
-        updateEditingMode()
+        //проверяем а есть ли у нас сейчас пользователь который вошел и загружает данные этого пользователя в экран настроек
+        if FUser.currentId() != nil {
+            loadUserData()
+            updateEditingMode()
+        }
+        
+        
         
         
         
@@ -82,12 +88,29 @@ class ProfileTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = editingMode ? saveButton : nil
     }
     
+    //MARK: - Load User Data
+    private func loadUserData() {
+        let currentUser = FUser.currentUser()!
+        nameAgeLabel.text = currentUser.username
+        cityCountryLabel.text = currentUser.country + ", " + currentUser.city
+        aboutMeTextField.text = currentUser.about != "" ? currentUser.about : "A little bit about me"
+        jobTextField.text = currentUser.jobTitle
+        professionTextField.text = currentUser.profession
+        genderTextField.text = currentUser.isMale ? "Male" : "Female"
+        cityTextField.text = currentUser.city
+        countryTextField.text = currentUser.country
+        heightTextField.text = "\(currentUser.height)"
+        lookingForTextField.text = currentUser.lookingFor
+        avatarImageView.image = nil
+    //TODO: - set avatar picture.
+    }
+    
     //MARK: - Editing Mode
     private func updateEditingMode() {
         aboutMeTextField.isUserInteractionEnabled = editingMode
         aboutMeTextView.isUserInteractionEnabled = editingMode
         jobTextField.isUserInteractionEnabled = editingMode
-        educationTextField.isUserInteractionEnabled = editingMode
+        professionTextField.isUserInteractionEnabled = editingMode
         genderTextField.isUserInteractionEnabled = editingMode
         cityTextField.isUserInteractionEnabled = editingMode
         countryTextField.isUserInteractionEnabled = editingMode

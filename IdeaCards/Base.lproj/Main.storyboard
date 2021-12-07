@@ -860,12 +860,12 @@
                         <outlet property="cityCountryLabel" destination="2Az-M1-9UF" id="zEq-bp-9YY"/>
                         <outlet property="cityTextField" destination="gPC-dh-fat" id="1EB-bH-Q5a"/>
                         <outlet property="countryTextField" destination="mzP-H5-Qmi" id="q4m-ls-bdq"/>
-                        <outlet property="educationTextField" destination="HWf-Un-l7Y" id="wKx-4f-ICr"/>
                         <outlet property="genderTextField" destination="qoz-5g-2kG" id="ns9-Xi-AJ5"/>
                         <outlet property="heightTextField" destination="yJg-b5-dLO" id="x1Z-of-miW"/>
                         <outlet property="jobTextField" destination="ACi-dF-LSC" id="fKO-hr-jL3"/>
                         <outlet property="lookingForTextField" destination="d1w-Cl-MNL" id="Rdr-yx-tVI"/>
                         <outlet property="nameAgeLabel" destination="OLn-1V-djo" id="pJ0-hQ-0va"/>
+                        <outlet property="professionTextField" destination="HWf-Un-l7Y" id="wKx-4f-ICr"/>
                         <outlet property="profileCellBackground" destination="yPz-CC-0Ax" id="bUd-m6-bJG"/>
                     </connections>
                 </tableViewController>
