@@ -91,7 +91,7 @@ class ProfileTableViewController: UITableViewController {
     //MARK: - Load User Data
     private func loadUserData() {
         let currentUser = FUser.currentUser()!
-        nameAgeLabel.text = currentUser.username
+        nameAgeLabel.text = currentUser.username + ", \(currentUser.dateOfBirth.interval(ofComponent: .year, fromDate: Date()) * -1)"
         cityCountryLabel.text = currentUser.country + ", " + currentUser.city
         aboutMeTextField.text = currentUser.about != "" ? currentUser.about : "A little bit about me"
         jobTextField.text = currentUser.jobTitle
@@ -101,7 +101,7 @@ class ProfileTableViewController: UITableViewController {
         countryTextField.text = currentUser.country
         heightTextField.text = "\(currentUser.height)"
         lookingForTextField.text = currentUser.lookingFor
-        avatarImageView.image = nil
+        avatarImageView.image = UIImage(named: "avatar")
     //TODO: - set avatar picture.
     }
     
