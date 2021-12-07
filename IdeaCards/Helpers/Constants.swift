@@ -8,6 +8,7 @@
 import Foundation
 
 public let userDefaults = UserDefaults.standard
+public let kFILEREFERENCE = "gs://ideacards-762a1.appspot.com"
 
 //FUser
 public let kOBJECTID = "objectID"

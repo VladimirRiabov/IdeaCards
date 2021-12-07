@@ -11,6 +11,7 @@
 		A43A1EA62759460E00753485 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43A1EA52759460E00753485 /* RegisterViewController.swift */; };
 		A43A1EA82759822E00753485 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43A1EA72759822E00753485 /* FUser.swift */; };
 		A43A1EAA275A351A00753485 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43A1EA9275A351A00753485 /* Constants.swift */; };
+		A459726B275FFE0000A25D0C /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A459726A275FFE0000A25D0C /* FileStorage.swift */; };
 		A478038A275BA58000587F3C /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4780389275BA58000587F3C /* FCollectionReference.swift */; };
 		A478038C275BA70200587F3C /* FirebaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478038B275BA70200587F3C /* FirebaseListener.swift */; };
 		A47B379B27393D0C0098EA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47B379A27393D0C0098EA4C /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 		A43A1EA52759460E00753485 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A43A1EA72759822E00753485 /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		A43A1EA9275A351A00753485 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A459726A275FFE0000A25D0C /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		A4780389275BA58000587F3C /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
 		A478038B275BA70200587F3C /* FirebaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseListener.swift; sourceTree = "<group>"; };
 		A47B379727393D0C0098EA4C /* IdeaCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 			children = (
 				A47B379A27393D0C0098EA4C /* AppDelegate.swift */,
 				A4A15681275D0231007CA4B6 /* ProfileTableViewController.swift */,
+				A459726A275FFE0000A25D0C /* FileStorage.swift */,
 				A47B379C27393D0C0098EA4C /* SceneDelegate.swift */,
 				A47B37A027393D0C0098EA4C /* Main.storyboard */,
 				A47B37A327393D0D0098EA4C /* Assets.xcassets */,
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A478038C275BA70200587F3C /* FirebaseListener.swift in Sources */,
+				A459726B275FFE0000A25D0C /* FileStorage.swift in Sources */,
 				A4ECA18C275BFA26003B7A8C /* Extensions.swift in Sources */,
 				A43A1EA82759822E00753485 /* FUser.swift in Sources */,
 				A43A1EA42759460400753485 /* WelcomeViewController.swift in Sources */,
