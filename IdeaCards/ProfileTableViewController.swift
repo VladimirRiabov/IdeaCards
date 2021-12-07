@@ -67,9 +67,20 @@ class ProfileTableViewController: UITableViewController {
         editingMode ? showKeyboard() : hideKeyboard()
         showSaveButton()
     }
-    
+    //выполняет действие после нажатия всплывающей кнопки save
     @objc func editUserData() {
         print("fuck you")
+        let user = FUser.currentUser()!
+        user.about = aboutMeTextField.text
+        user.jobTitle = jobTextField.text ?? ""
+        user.profession = professionTextField.text ?? ""
+        user.isMale = genderTextField.text == "Male"
+        user.city = cityTextField.text ?? ""
+        user.country = countryTextField.text ?? ""
+        user.lookingFor = lookingForTextField.text ?? ""
+        user.height = Double(heightTextField.text ?? "0") ?? 0
+        
+        
         
     }
     
