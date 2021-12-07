@@ -28,6 +28,7 @@ class ProfileTableViewController: UITableViewController {
     
     //MARK: - Vars
     var editingMode = false
+    var avatarImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,6 @@ class ProfileTableViewController: UITableViewController {
     }
     //выполняет действие после нажатия всплывающей кнопки save
     @objc func editUserData() {
-        print("fuck you")
         let user = FUser.currentUser()!
         user.about = aboutMeTextField.text
         user.jobTitle = jobTextField.text ?? ""
@@ -79,9 +79,25 @@ class ProfileTableViewController: UITableViewController {
         user.country = countryTextField.text ?? ""
         user.lookingFor = lookingForTextField.text ?? ""
         user.height = Double(heightTextField.text ?? "0") ?? 0
-        
-        
-        
+        if avatarImage != nil {
+            //upload new avatar
+            //save user
+        } else {
+            //save it
+            saveUserData(user: user)
+        }
+        //выключает editingmode
+        editingMode = false
+        //выключает текстовые поля от редактирования
+        updateEditingMode()
+        //убирает кнопку save в соответствиие с editingMode = false
+        showSaveButton()
+        //обновляет информацию в профайле в приложениие автоматически
+        loadUserData()
+    }
+    private func saveUserData(user: FUser) {
+        user.saveUserLocally()
+        user.saveUserToFirestore()
     }
     
     //MARK: - Setup
