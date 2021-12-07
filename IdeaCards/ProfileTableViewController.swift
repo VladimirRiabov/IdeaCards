@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Gallery
 
 class ProfileTableViewController: UITableViewController {
     
@@ -28,7 +29,10 @@ class ProfileTableViewController: UITableViewController {
     
     //MARK: - Vars
     var editingMode = false
+    
     var avatarImage: UIImage?
+    var gallery: GalleryController!
+    var uploadingAvatar = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,6 +155,21 @@ class ProfileTableViewController: UITableViewController {
     private func hideKeyboard() {
         self.view.endEditing(false)
         
+    }
+    
+    //MARK: - Gallery
+    private func showGallery(forAvatar: Bool) {
+        uploadingAvatar = forAvatar
+        // are creating galleryController
+        self.gallery = GalleryController()
+        //our view is gonna be our delegate
+        self.gallery.delegate = self
+        //we are making image and cammer buttons in the buttom
+        Config.tabsToShow = [.imageTab, .cameraTab]
+        Config.Camera.imageLimit = forAvatar ? 1 : 10
+        //когда откроется galleryController первым окном которое откроется будет imagetab
+        Config.initialTab = .imageTab
+        self.present(gallery, animated: true, completion: nil)
     }
     
     //MARK: - AlertController
