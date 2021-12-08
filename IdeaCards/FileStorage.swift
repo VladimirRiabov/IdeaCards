@@ -39,13 +39,34 @@ class FileStorage {
                 }
                 print("we have uploadedimage to ", downloadUrl.absoluteString )
                 completion(downloadUrl.absoluteString)
+                //  Now we're going to by default when you upload something to Firebase E and you create a task, this task like keeping keeps listening for any changes to these upload like you have finished upload, you have terminated upload, et cetera.
+                //So as soon as the cold back here is called, we want to stop listening for any changes
+                //completion: { (metaData, error) in
+                //because our upload has finished. It may finish with error or it may finish successfully. But we want to stop listening for any more changes.task.removeAllObservers()
             }
         })
    
     }
+    
+    class func saveImageLocally(imageData: NSData, fileName: String) {
+        var docURL = getDocumentsURL()
+        //false - its nof a folder, it will be a file
+        docURL = docURL.appendingPathComponent(fileName, isDirectory: false)
+        //And what does it mean is let's say you have a file with the same name already in a local file directory. So it's going to rewrite that file. And if it was successful, it will get rid of the old one.
+        imageData.write(to: docURL, atomically: <#T##Bool#>)
+    }
+    
 }
 
-//  Now we're going to by default when you upload something to Firebase E and you create a task, this task like keeping keeps listening for any changes to these upload like you have finished upload, you have terminated upload, et cetera.
-//So as soon as the cold back here is called, we want to stop listening for any changes
-//completion: { (metaData, error) in
-//because our upload has finished. It may finish with error or it may finish successfully. But we want to stop listening for any more changes.task.removeAllObservers()
+//So let's create a function that is going to return access to our sandbox, our file, our manager.
+func getDocumentsURL() -> URL {
+    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last
+    return documentsURL!
+}
+//So why we need this is when we went to save a file locally. We need to have like the full length, the full path to the file that we want to save.
+func fileInDocumentDirectory(filename: String) -> String {
+    let fileURL = getDocumentsURL().appendingPathComponent(filename)
+    return fileURL.path
+}
+
+
