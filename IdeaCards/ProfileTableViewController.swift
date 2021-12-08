@@ -85,11 +85,21 @@ class ProfileTableViewController: UITableViewController {
         user.lookingFor = lookingForTextField.text ?? ""
         user.height = Double(heightTextField.text ?? "0") ?? 0
         if avatarImage != nil {
-            //upload new avatar
+            print("if we have a new avatar - upload new avatar")
             //save user
+            uploadAvatar(avatarImage!) { (avatarLink) in
+                user.avatarLink = avatarLink ?? ""
+                print("это аватар линк который не сохраняется почему то", (user.avatarLink))
+                user.avatar = self.avatarImage
+//                user.saveUserToFirestore()
+                self.saveUserData(user: user)
+                self.loadUserData()
+            }
+            
         } else {
             //save it
             saveUserData(user: user)
+            loadUserData()
         }
         //выключает editingmode
         editingMode = false
@@ -97,8 +107,7 @@ class ProfileTableViewController: UITableViewController {
         updateEditingMode()
         //убирает кнопку save в соответствиие с editingMode = false
         showSaveButton()
-        //обновляет информацию в профайле в приложениие автоматически
-        loadUserData()
+        //обновляет информацию в профайле в приложениие автоматически loadUserData() разделили добавлением аватара
     }
     private func saveUserData(user: FUser) {
         user.saveUserLocally()
@@ -134,7 +143,7 @@ class ProfileTableViewController: UITableViewController {
         heightTextField.text = "\(currentUser.height)"
         lookingForTextField.text = currentUser.lookingFor
         avatarImageView.image = UIImage(named: "avatar")
-    //TODO: - set avatar picture.
+        avatarImageView.image = currentUser.avatar
     }
     
     //MARK: - Editing Mode
@@ -161,11 +170,27 @@ class ProfileTableViewController: UITableViewController {
         
     }
     
+    
+    
+    //MARK: - FileStorage
+    //this function uploads the Avatar and gives us the link.
+    private func uploadAvatar(_ image: UIImage, completion: @escaping (_ avatarLink: String?) -> Void) {
+        ProgressHUD.show()
+        //we want to upload to our root directory to avatars folder, ниже идет процесс формирование конца ссылки
+        let fileDeirectiry = "Avatars/_" + FUser.currentId() + ".jpg"
+        FileStorage.uploadImage(image, directory: fileDeirectiry) { (avatarLink) in
+            ProgressHUD.dismiss()
+           //save file locally
+            
+            //вытаскиваем ссылку через complition функции uploadavatar
+            completion(avatarLink)
+        }
+    }
+    
     private func uploadImages(images: [UIImage?]) {
         ProgressHUD.show()
         //upload images
     }
-    
     
     //MARK: - Gallery
     private func showGallery(forAvatar: Bool) {

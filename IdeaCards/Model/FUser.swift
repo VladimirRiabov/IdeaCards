@@ -120,6 +120,9 @@ class FUser: Equatable {
         } else {
             dateOfBirth = _dictionary[kDATEOFBIRTH] as? Date ?? Date()
         }
+        
+        let placeHolder = isMale ? "mPlaceholder" : "fPlaceholder"
+        avatar = UIImage(named: placeHolder)
     }
     
     //MARK: - Returning current user
