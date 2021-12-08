@@ -53,7 +53,7 @@ class FileStorage {
         //false - its nof a folder, it will be a file
         docURL = docURL.appendingPathComponent(fileName, isDirectory: false)
         //And what does it mean is let's say you have a file with the same name already in a local file directory. So it's going to rewrite that file. And if it was successful, it will get rid of the old one.
-        imageData.write(to: docURL, atomically: <#T##Bool#>)
+        imageData.write(to: docURL, atomically: true)
     }
     
 }

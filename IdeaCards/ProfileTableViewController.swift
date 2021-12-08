@@ -181,7 +181,7 @@ class ProfileTableViewController: UITableViewController {
         FileStorage.uploadImage(image, directory: fileDeirectiry) { (avatarLink) in
             ProgressHUD.dismiss()
            //save file locally
-            
+            FileStorage.saveImageLocally(imageData: image.jpegData(compressionQuality: 0.6) as! NSData, fileName: FUser.currentId())
             //вытаскиваем ссылку через complition функции uploadavatar
             completion(avatarLink)
         }

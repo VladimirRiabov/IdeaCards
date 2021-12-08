@@ -120,9 +120,9 @@ class FUser: Equatable {
         } else {
             dateOfBirth = _dictionary[kDATEOFBIRTH] as? Date ?? Date()
         }
-        
+        //если у нас нет изображения аватара то мы ставим плейсхолдер если есть аватар то он будет вставляться из юзурдефолт
         let placeHolder = isMale ? "mPlaceholder" : "fPlaceholder"
-        avatar = UIImage(named: placeHolder)
+        avatar = UIImage(contentsOfFile: fileInDocumentDirectory(filename: self.objectId)) ?? UIImage(named: placeHolder)
     }
     
     //MARK: - Returning current user
