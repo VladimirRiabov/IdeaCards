@@ -7,9 +7,11 @@
 
 import Foundation
 import FirebaseStorage
+import UIKit
 
 //this way we get access to our firebase storage.
 let storage = Storage.storage()
+
 
 
 class FileStorage {
@@ -47,6 +49,48 @@ class FileStorage {
         })
    
     }
+    //мы хотим скачать каритинку с firebase но предварительно мы проверяем есть ли она локально, и если да то берем локальную версию
+    class func downloadImage(imageURL: String, completion: @escaping (_ image: UIImage?) -> Void) {
+        //помогает нам обратить внимание по каким символам можно разбить эту ссылку
+        print("urls is ", imageURL)
+        //делит строку путем поиска в ней элемента пока мы не получим имя файла
+        let imageFileName = ((imageURL.components(separatedBy: "_").last!).components(separatedBy: "?").first!).components(separatedBy: ".").first!
+        //прооверка файла на наличии его локально
+        if fileExistsAtPath(path: imageFileName) {
+            print("we have local file")
+            if let contentsOfFile = UIImage(contentsOfFile: fileInDocumentDirectory(filename: imageFileName)) {
+                completion(contentsOfFile)
+            } else {
+                
+                completion(UIImage(named: "avatar"))
+            }
+        } else {
+            //download
+            print("we dont have a local file")
+            if imageURL != "" {
+                let documentURL = URL(string: imageURL)
+                let downloadQueue = DispatchQueue(label: "downloadQueue")
+                downloadQueue.async {
+                    //это создает данные  из всего что могло бы лежать по этому url
+                    let data = NSData(contentsOf: documentURL!)
+                    if data != nil {
+                            //и говорим что из этих данных я хочу получить именно картинку
+                            let imageToReturn = UIImage(data: data! as! Data)
+                            completion(imageToReturn)
+                        //и сохраняем файл локально
+                        FileStorage.saveImageLocally(imageData: data!, fileName: imageFileName)
+                    } else {
+                        print("no image in local database")
+                        completion(nil)
+                    }
+                }
+            } else {
+                completion(UIImage(named: "avatar"))
+            }
+        }
+       
+        
+    }
     
     class func saveImageLocally(imageData: NSData, fileName: String) {
         var docURL = getDocumentsURL()
@@ -67,6 +111,20 @@ func getDocumentsURL() -> URL {
 func fileInDocumentDirectory(filename: String) -> String {
     let fileURL = getDocumentsURL().appendingPathComponent(filename)
     return fileURL.path
+}
+//функция проверяет есть ли на локальном носителе файл с именем
+func fileExistsAtPath(path: String) -> Bool {
+//    var doesExist = false
+    //    let filePath = fileInDocumentDirectory(filename: path)
+    //    if FileManager.default.fileExists(atPath: filePath) {
+    //        doesExist = true
+    //    } else {
+    //        doesExist = false
+    //    }
+    //    return doesExist
+    
+    //краткая форма того что сверху
+    return FileManager.default.fileExists(atPath: fileInDocumentDirectory(filename: path))
 }
 
 

@@ -137,6 +137,10 @@ class FUser: Equatable {
         }
         return nil
     }
+    //it going to access our download image function
+    func getUserAvatarFromFireStorage(completion: @escaping (_ didSet: Bool) -> Void) {
+        
+    }
     
     //MARK: - Login User
     class func  loginUserWith(email: String, password: String, completion: @escaping (_ error: Error?,_ isEmailVerified: Bool) -> Void) {

@@ -714,7 +714,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="48.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="My basic info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICq-nX-Eh9">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My basic info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICq-nX-Eh9">
                                                     <rect key="frame" x="20" y="12.5" width="374" height="23.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="23.5" id="m6e-yH-JoR"/>
@@ -741,7 +741,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qoz-5g-2kG">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qoz-5g-2kG">
                                                     <rect key="frame" x="20" y="2" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -753,6 +753,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="qoz-5g-2kG" secondAttribute="trailing" constant="20" id="ISF-Ab-bQC"/>
                                                 <constraint firstAttribute="bottom" secondItem="qoz-5g-2kG" secondAttribute="bottom" constant="2" id="NfG-FB-Rvk"/>
                                                 <constraint firstItem="qoz-5g-2kG" firstAttribute="leading" secondItem="2v4-6o-8NK" secondAttribute="leading" constant="20" id="OEx-pB-8iE"/>
+                                                <constraint firstItem="qoz-5g-2kG" firstAttribute="centerY" secondItem="2v4-6o-8NK" secondAttribute="centerY" id="RKx-89-9uw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -763,7 +764,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gPC-dh-fat">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gPC-dh-fat">
                                                     <rect key="frame" x="20" y="2" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -775,6 +776,7 @@
                                                 <constraint firstItem="gPC-dh-fat" firstAttribute="leading" secondItem="HIm-f8-D93" secondAttribute="leading" constant="20" id="3jg-Kh-e1W"/>
                                                 <constraint firstAttribute="bottom" secondItem="gPC-dh-fat" secondAttribute="bottom" constant="2" id="AyR-BP-Mi7"/>
                                                 <constraint firstItem="gPC-dh-fat" firstAttribute="top" secondItem="HIm-f8-D93" secondAttribute="top" constant="2" id="xTA-3P-7gs"/>
+                                                <constraint firstItem="gPC-dh-fat" firstAttribute="centerY" secondItem="HIm-f8-D93" secondAttribute="centerY" id="yWM-WC-ogi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -785,7 +787,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzP-H5-Qmi">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzP-H5-Qmi">
                                                     <rect key="frame" x="20" y="2" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -797,6 +799,7 @@
                                                 <constraint firstItem="mzP-H5-Qmi" firstAttribute="top" secondItem="Lgu-Xq-AO4" secondAttribute="top" constant="2" id="8JK-yR-Eip"/>
                                                 <constraint firstAttribute="trailing" secondItem="mzP-H5-Qmi" secondAttribute="trailing" constant="20" id="L06-fm-a1y"/>
                                                 <constraint firstItem="mzP-H5-Qmi" firstAttribute="leading" secondItem="Lgu-Xq-AO4" secondAttribute="leading" constant="20" id="PrL-tq-Wvb"/>
+                                                <constraint firstItem="mzP-H5-Qmi" firstAttribute="centerY" secondItem="Lgu-Xq-AO4" secondAttribute="centerY" id="oIp-1I-j3p"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -807,7 +810,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yJg-b5-dLO">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yJg-b5-dLO">
                                                     <rect key="frame" x="20" y="2" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -819,6 +822,7 @@
                                                 <constraint firstItem="yJg-b5-dLO" firstAttribute="leading" secondItem="rHi-aK-e6I" secondAttribute="leading" constant="20" id="XZ9-6l-GNT"/>
                                                 <constraint firstAttribute="bottom" secondItem="yJg-b5-dLO" secondAttribute="bottom" constant="2" id="Xkk-rN-Hy1"/>
                                                 <constraint firstItem="yJg-b5-dLO" firstAttribute="top" secondItem="rHi-aK-e6I" secondAttribute="top" constant="2" id="aSg-ga-ax8"/>
+                                                <constraint firstItem="yJg-b5-dLO" firstAttribute="centerY" secondItem="rHi-aK-e6I" secondAttribute="centerY" id="sfL-5m-DIT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -829,7 +833,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Looking for" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-Cl-MNL">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Looking for" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-Cl-MNL">
                                                     <rect key="frame" x="20" y="2" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -839,6 +843,7 @@
                                             <constraints>
                                                 <constraint firstItem="d1w-Cl-MNL" firstAttribute="top" secondItem="YvF-by-P3I" secondAttribute="top" constant="2" id="BFc-tr-cXH"/>
                                                 <constraint firstItem="d1w-Cl-MNL" firstAttribute="leading" secondItem="YvF-by-P3I" secondAttribute="leading" constant="20" id="BOX-hE-RCh"/>
+                                                <constraint firstItem="d1w-Cl-MNL" firstAttribute="centerY" secondItem="YvF-by-P3I" secondAttribute="centerY" id="ef9-mN-4aV"/>
                                                 <constraint firstAttribute="trailing" secondItem="d1w-Cl-MNL" secondAttribute="trailing" constant="20" id="m5O-xg-yOo"/>
                                                 <constraint firstAttribute="bottom" secondItem="d1w-Cl-MNL" secondAttribute="bottom" constant="2" id="zUB-5i-88L"/>
                                             </constraints>

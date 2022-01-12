@@ -131,7 +131,12 @@ class ProfileTableViewController: UITableViewController {
     
     //MARK: - Load User Data
     private func loadUserData() {
+        
         let currentUser = FUser.currentUser()!
+        FileStorage.downloadImage(imageURL: currentUser.avatarLink) { (image) in
+            
+        }
+        
         nameAgeLabel.text = currentUser.username + ", \(currentUser.dateOfBirth.interval(ofComponent: .year, fromDate: Date()) * -1)"
         cityCountryLabel.text = currentUser.country + ", " + currentUser.city
         aboutMeTextField.text = currentUser.about != "" ? currentUser.about : "A little bit about me"
